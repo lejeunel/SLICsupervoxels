@@ -15,6 +15,7 @@ def make_mean_regions(img, labels):
 
     return img_out
 
+
 reqdsupervoxelsize = 1000
 compactness = 10.0
 

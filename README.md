@@ -6,7 +6,7 @@ This package is a port of a MATLAB/mex implementation by Radhakrishna Achanta av
 ## Prerequisites
 
 This software requires the
-[Boost](https://www.google.com) library to wrap C++ code for use in Python.
+[Boost](http://www.boost.org/) library to wrap C++ code for use in Python.
 
 ```
 sudo apt-get install libboost-all-dev
