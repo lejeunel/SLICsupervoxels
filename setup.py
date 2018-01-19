@@ -65,3 +65,22 @@ class CMakeBuild(build_ext):
         subprocess.check_call(['cmake', '--build', '.'] + build_args,
                               cwd=self.build_temp)
         print()  # Add an empty line for cleaner output
+
+setup(
+    name='SLICsupervoxels',
+    version='0.1',
+    author='Radhakrishna Achanta',
+    author_email='',
+    description='SLICsupervoxels',
+    long_description='',
+    # add extension module
+    ext_modules=[CMakeExtension('SLICsupervoxels')],
+    # add custom build_ext command
+    cmdclass=dict(build_ext=CMakeBuild),
+    install_requires=[
+            'numpy',
+            'matplotlib',
+            'scikit-image',
+        ],
+    zip_safe=False,
+)

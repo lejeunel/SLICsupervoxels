@@ -1,16 +1,24 @@
-# Install
-Create build directory
+# SLIC supervoxel
+Python/C++ implementation of the [SLIC supervoxel](http://ivrl.epfl.ch/research/superpixels) method.
+
+This package is a port of a MATLAB/mex implementation by Radhakrishna Achanta available [here](http://ivrl.epfl.ch/files/content/sites/ivrg/files/supplementary_material/RK_SLICsuperpixels/SLIC_mex.zip).
+
+## Prerequisites
+
+This software requires the
+[Boost](https://www.google.com) library to wrap C++ code for use in Python.
 
 ```
-mkdir build
-cd build
+sudo apt-get install libboost-all-dev
 ```
 
-If you have a virtual environment, do this, otherwise default values will be used.
+## Installing
 
+From the project's root, install the Python package with:
 ```
-cmake -D PYTHON_INCLUDE_DIRS=~/.pyenv/versions/3.5.0/include/python3.5m \
-    -D PYTHON_INCLUDE_DIR=~/.pyenv/versions/3.5.0/include/python3.5m \
-    -D PYTHON_LIBRARY=/usr/lib/libpython3.so \
-    -D PYTHON_EXECUTABLE=~/.pyenv/versions/3.5.0/bin/python ..
+pip install .
 ```
+
+## Getting started
+
+The provided file demo.py indicates the typical steps to generate supervoxels from Python.

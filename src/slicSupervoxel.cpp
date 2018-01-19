@@ -650,9 +650,9 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
     int numdims = stack.get_nd() ;
     dims  = stack.get_shape();
     imgbytes = getArrayInput<unsigned char>(stack);
-    std::cout << "numdims: " << numdims << std::endl;
-    std::cout << "numelements: " << numelements << std::endl;
-    std::cout << "dims: " << dims << std::endl;
+    //std::cout << "numdims: " << numdims << std::endl;
+    //std::cout << "numelements: " << numelements << std::endl;
+    //std::cout << "dims: " << dims << std::endl;
     if(3 == numdims)
     {
         depth = dims[2];
@@ -667,10 +667,10 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
         height = dims[0];
     }
 
-    std::cout << "width: " << width << std::endl;
-    std::cout << "height: " << height << std::endl;
-    std::cout << "depth: " << depth << std::endl;
-    std::cout << "colors: " << colors << std::endl;
+    //std::cout << "width: " << width << std::endl;
+    //std::cout << "height: " << height << std::endl;
+    //std::cout << "depth: " << depth << std::endl;
+    //std::cout << "colors: " << colors << std::endl;
     
     sz2 = width*height;
     sz3 = width*height*depth;
@@ -699,7 +699,7 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
     //---------------------------
     if(numelements/sz3 == 1)//if it is a grayscale image, copy the values into the l vector
     {
-        std::cout << "Is grayscale" << std::endl;
+        //std::cout << "Is grayscale" << std::endl;
         //---------------------------
         lvec = allocate_memory<double>(sz3) ;
         //---------------------------
@@ -732,8 +732,8 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
     }
     else//for color image volume
     {
-        std::cout << "Is color" << std::endl;
-        std::cout << "numseeds: " << numseeds << std::endl;
+        //std::cout << "Is color" << std::endl;
+        //std::cout << "numseeds: " << numseeds << std::endl;
         rin     = allocate_memory<unsigned char>(sz3) ;
         gin     = allocate_memory<unsigned char>(sz3) ;
         bin     = allocate_memory<unsigned char>(sz3) ;
@@ -759,12 +759,12 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
         }
         
         rgbtolab(rin,gin,bin,sz3,lvec,avec,bvec);
-        std::cout << "rin[1000]: " << (int)(rin[1000]) << std::endl;
-        std::cout << "gin[1000]: " << (int)(gin[1000]) << std::endl;
-        std::cout << "bin[1000]: " << (int)(bin[1000]) << std::endl;
-        std::cout << "lvec[1000]" << lvec[1000] << std::endl;
-        std::cout << "avec[1000]" << avec[1000] << std::endl;
-        std::cout << "bvec[1000]" << bvec[1000] << std::endl;
+        //std::cout << "rin[1000]: " << (int)(rin[1000]) << std::endl;
+        //std::cout << "gin[1000]: " << (int)(gin[1000]) << std::endl;
+        //std::cout << "bin[1000]: " << (int)(bin[1000]) << std::endl;
+        //std::cout << "lvec[1000]" << lvec[1000] << std::endl;
+        //std::cout << "avec[1000]" << avec[1000] << std::endl;
+        //std::cout << "bvec[1000]" << bvec[1000] << std::endl;
         deallocate_memory(rin);
         deallocate_memory(gin);
         deallocate_memory(bin);
@@ -785,7 +785,7 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
         // Compute superpixels
         //---------------------------
         PerformSupervoxelSLIC(lvec, avec, bvec, kseedsl,kseedsa,kseedsb,kseedsx,kseedsy,kseedsz,width,height,depth,numseeds,klabels,step,compactness);
-        std::cout << "Done PerformSupervoxelSLIC" << std::endl;
+        //std::cout << "Done PerformSupervoxelSLIC" << std::endl;
     }
     
     
@@ -799,7 +799,7 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
                                   numReqdSupervoxels,
                                   clabels,
                                   &finalNumberOfLabels);
-    std::cout << "Done EnforceSupervoxelConnectivity" << std::endl;
+    //std::cout << "Done EnforceSupervoxelConnectivity" << std::endl;
 
     //---------------------------
     // Assign output labels
@@ -808,24 +808,24 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
     ndims[0] = height;
     ndims[1] = width;
     ndims[2] = depth;
-    std::cout << "Made ndims array" << std::endl;
+    //std::cout << "Made ndims array" << std::endl;
     //bn::ndarray labels = bn::empty(bp::make_tuple(height,width,depth),bn::dtype::get_builtin<int>());
-    std::cout << "Made labels empty array" << std::endl;
+    //std::cout << "Made labels empty array" << std::endl;
 
     //outlabels = getArrayInput<int>(labels);
     bp::tuple shape = bp::make_tuple(height,width,depth);
 
     bn::ndarray *labels = npWriteStack(width,height,depth, clabels);
     //bn::ndarray labels = toNumpy(width, height, depth, clabels);
-    std::cout << "after from_data" << std::endl;
+    //std::cout << "after from_data" << std::endl;
 
-    std::cout << "Populated outlabels" << std::endl;
-    std::cout << "finalNumberOfLabels:" << finalNumberOfLabels << std::endl;
+    //std::cout << "Populated outlabels" << std::endl;
+    //std::cout << "finalNumberOfLabels:" << finalNumberOfLabels << std::endl;
 
     //---------------------------
     // Assign number of labels/seeds
     outputNumSuperpixels = finalNumberOfLabels;
-    std::cout << "Assigned outputNumSuperpixels" << std::endl;
+    //std::cout << "Assigned outputNumSuperpixels" << std::endl;
     //std::cout << "outputNumSuperpixels:" << *outputNumSuperpixels << std::endl;
     //------------------------
 
@@ -848,6 +848,6 @@ bp::tuple svx::run(bn::ndarray stack, int numReqdSupervoxels=200, double compact
     //deallocate_memory(clabels);
     deallocate_memory(seedIndices);
 
-    std::cout << "Before return" << std::endl;
+    //std::cout << "Before return" << std::endl;
     return bp::make_tuple(*labels, outputNumSuperpixels);
 }
