@@ -16,7 +16,7 @@ def make_mean_regions(img, labels):
     return img_out
 
 
-reqdsupervoxelsize = 1000
+reqdsupervoxelsize = 2500
 compactness = 10.0
 
 # Create supervoxel object
@@ -47,4 +47,5 @@ plt.title('Original image')
 plt.subplot(122)
 plt.imshow(mean_img)
 plt.title('Contours of supervoxels')
+plt.suptitle('number of supervoxels: {}'.format(numlabels))
 plt.show()

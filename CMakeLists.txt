@@ -17,7 +17,7 @@ IF(NOT CMAKE_BUILD_TYPE)
   #SET(CMAKE_BUILD_TYPE "MINSIZEREL")
 ENDIF()
 
-find_package( Boost 1.63.0 REQUIRED COMPONENTS python3 numpy3)
+find_package( Boost 1.58.0 REQUIRED COMPONENTS python3 numpy3)
 message("Include dirs of Boost: " ${Boost_INCLUDE_DIRS} )
 message("Libs of Boost: " ${Boost_LIBRARIES} )
 
