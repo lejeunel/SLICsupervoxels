@@ -77,6 +77,8 @@ setup(
     ext_modules=[CMakeExtension('SLICsupervoxels')],
     # add custom build_ext command
     cmdclass=dict(build_ext=CMakeBuild),
+    package_data={'': ['libsvx.so']},
+    include_package_data=True,
     install_requires=[
             'numpy',
             'matplotlib',
