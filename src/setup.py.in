@@ -1,0 +1,13 @@
+from distutils.core import setup
+import os
+
+setup(
+    name='SLICsupervoxels',
+    version='${PACKAGE_VERSION}',
+    author='Laurent Lejeune',
+    author_email='laurent.lejeune@artorg.unibe.ch',
+    description='SLICsupervoxels',
+    packages=['SLICsupervoxels'],
+    package_dir={'': '${CMAKE_CURRENT_BINARY_DIR}'},
+    package_data = {'SLICsupervoxels': ['libsvx.so']}
+)

@@ -16,7 +16,11 @@ sudo apt-get install libboost-all-dev
 
 From the project's root, install the Python package with:
 ```
-pip install .
+mkdir build
+cd build
+cmake ..
+make
+make install
 ```
 
 ## Getting started
