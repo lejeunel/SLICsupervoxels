@@ -20,7 +20,7 @@ mkdir build
 cd build
 cmake ..
 make
-make install
+python3 src/setup.py install
 ```
 
 ## Getting started

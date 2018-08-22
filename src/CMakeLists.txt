@@ -68,10 +68,8 @@ add_custom_command(OUTPUT ${OUTPUT}
 		COMMAND ${CMAKE_COMMAND} -E copy
 			"${CMAKE_CURRENT_SOURCE_DIR}/SLICsupervoxels/__init__.py"
 			"${CMAKE_CURRENT_BINARY_DIR}/SLICsupervoxels/__init__.py"
-	       COMMAND ${PYTHON} ${SETUP_PY} build
-	       COMMAND ${CMAKE_COMMAND} -E touch ${OUTPUT}
 	       DEPENDS ${DEPS})
 
 add_custom_target(target ALL DEPENDS ${OUTPUT})
 
-install(CODE "execute_process(COMMAND ${PYTHON} ${SETUP_PY} install)")
+##install(CODE "execute_process(COMMAND ${PYTHON} ${SETUP_PY} install)")
